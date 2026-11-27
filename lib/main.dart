@@ -180,8 +180,11 @@ class _HomeScreenState extends State<HomeScreen> {
       .doc(widget.user.uid)
       .collection('memos');
 
-  void _reload() =>
-      setState(() => _future = HolidayService.fetch(_year, _month));
+  void _reload() {
+    setState(() {
+      _future = HolidayService.fetch(_year, _month);
+    });
+  }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> _monthMemos() {
     final base = _year * 10000 + _month * 100;
